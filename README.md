@@ -29,8 +29,8 @@
 	
 <dependencies>
 		<dependency>
-			<groupId>com.yamajun.jcypher</groupId>
-			<artifactId>jcypher</artifactId>
+			<groupId>com.yamajun.jcipher</groupId>
+			<artifactId>jcipher</artifactId>
 			<version>1.1</version>
 		</dependency>
 		
@@ -82,9 +82,9 @@ class SampleObj {
 class test{
     public static void main(String[] args){
         SampleObj sampleObj = new SampleObj();
-        cypher.encryptObject(sampleObj);
+        cipher.encryptObject(sampleObj);
         //Now the params with @CipherMe are encrypted
-        cypher.decryptObject(sampleObj);
+        cipher.decryptObject(sampleObj);
     }
 }
 
