@@ -54,7 +54,7 @@ public JCipher testJCipher() throws JCipherInvalidKey {
 1.2 A more standard way
 
 ```java
-JCipher jCipher = new JCipher("MyKey");
+JCipher cipher = new JCipher("MyKey");
 ```
 
 ### Using class
@@ -62,8 +62,8 @@ JCipher jCipher = new JCipher("MyKey");
 1. We can encrypt / decrypt a plan string with:
 
 ```java
-cypher.encryptString("foo");
-cypher.decryptString("encryptedFoo");
+cipher.encryptString("foo");
+cipher.decryptString("encryptedFoo");
 ```
 
 2. We can encrypt a full object with java annotations

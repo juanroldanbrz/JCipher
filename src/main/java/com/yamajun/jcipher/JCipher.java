@@ -42,7 +42,7 @@ public class JCipher {
     }
 
     private void initCipher(String secret) throws JCipherInvalidKey {
-        logger.debug("Initializing JCypher");
+        logger.debug("Initializing JCipher");
         byte[] key;
         try {
             key = (secret).getBytes(DEFAULT_ENCODING);

@@ -9,32 +9,32 @@ import static org.junit.Assert.assertNotEquals;
 
 public class JCipherTest {
 
-    private JCipher cypher;
+    private JCipher cipher;
 
     @Before
     public void setUp() throws JCipherInvalidKey {
-        cypher = new JCipher("Random_password");
+        cipher = new JCipher("Random_password");
     }
 
     @Test(expected = NumberFormatException.class)
     public void testCipherNumber_NumberIsEncrypted() throws Exception {
         String numberToCipher = String.valueOf(1234);
-        String ciphered = cypher.encryptString(numberToCipher);
+        String ciphered = cipher.encryptString(numberToCipher);
         Integer.parseInt(ciphered);
     }
 
     @Test
     public void testCipherNumber_NumberIsDecrypted() throws Exception {
         String numberToCipher = String.valueOf(1234);
-        String ciphered = cypher.encryptString(numberToCipher);
-        String plainText = cypher.decryptString(ciphered);
+        String ciphered = cipher.encryptString(numberToCipher);
+        String plainText = cipher.decryptString(ciphered);
         Integer.parseInt(plainText);
     }
 
     @Test
     public void testCipherClass_NumberIsDecrypted() throws Exception {
         CipherMeTest objectToCipher = new CipherMeTest();
-        cypher.encryptObject(objectToCipher);
+        cipher.encryptObject(objectToCipher);
         assertEquals(CipherMeTest.INITIAL_NUMBER, objectToCipher.getNumberToNOTCipher());
         assertNotEquals(CipherMeTest.INITIAL_NUMBER, objectToCipher.getNumberToCipher());
     }
@@ -42,11 +42,11 @@ public class JCipherTest {
     @Test
     public void testCipherClass_NumberIsEncrypted() throws Exception {
         CipherMeTest objectToCipher = new CipherMeTest();
-        cypher.encryptObject(objectToCipher);
+        cipher.encryptObject(objectToCipher);
         assertEquals(CipherMeTest.INITIAL_NUMBER, objectToCipher.getNumberToNOTCipher());
         assertNotEquals(CipherMeTest.INITIAL_NUMBER, objectToCipher.getNumberToCipher());
 
-        cypher.decryptObject(objectToCipher);
+        cipher.decryptObject(objectToCipher);
         assertEquals(CipherMeTest.INITIAL_NUMBER, objectToCipher.getNumberToNOTCipher());
         assertEquals(CipherMeTest.INITIAL_NUMBER, objectToCipher.getNumberToCipher());
     }
