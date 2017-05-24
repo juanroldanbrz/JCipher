@@ -1,9 +1,5 @@
 package com.yamajun.jcypher;
 
-import com.sun.istack.internal.NotNull;
-import com.sun.org.apache.xml.internal.security.exceptions.Base64DecodingException;
-import com.sun.org.apache.xml.internal.security.utils.Base64;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -20,6 +16,7 @@ import com.yamajun.jcypher.annotation.CipherMe;
 import com.yamajun.jcypher.annotation.Ciphered;
 import com.yamajun.jcypher.exception.JCipherException;
 import com.yamajun.jcypher.exception.JCipherInvalidKey;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.util.Strings;
@@ -74,13 +71,13 @@ public class JCypher {
         }
     }
 
-    public String encryptString(@NotNull String plainText) throws JCipherException {
+    public String encryptString(String plainText) throws JCipherException {
         byte[] plainTextByte = plainText.getBytes();
         byte[] encryptedByte;
 
         try {
             encryptedByte = encryptCipher.doFinal(plainTextByte);
-            return Base64.encode(encryptedByte);
+            return Base64.encodeBase64String(encryptedByte);
 
         } catch (IllegalBlockSizeException | BadPaddingException e) {
             String errorMsg = String.format("Error while ciphering the String: <%s>", e);
@@ -89,23 +86,23 @@ public class JCypher {
         }
     }
 
-    public String decryptString(@NotNull String encryptedText) throws JCipherException {
+    public String decryptString(String encryptedText) throws JCipherException {
         try {
-            byte[] encryptedTextByte = Base64.decode(encryptedText);
+            byte[] encryptedTextByte = Base64.decodeBase64(encryptedText);
             byte[] decryptedByte = decryptCipher.doFinal(encryptedTextByte);
             return new String(decryptedByte);
-        } catch(BadPaddingException | IllegalBlockSizeException | Base64DecodingException e) {
+        } catch(BadPaddingException | IllegalBlockSizeException e) {
             String errorMsg = String.format("Error while deciphering the String: <%s>", e);
             logger.error(errorMsg);
             throw new JCipherException(errorMsg);
         }
     }
 
-    public void encryptObject(@NotNull Object object) throws Exception{
+    public void encryptObject(Object object) throws Exception{
         executeCipher(object, true);
     }
 
-    public void decryptObject(@NotNull Object object) throws Exception{
+    public void decryptObject(Object object) throws Exception{
         executeCipher(object, false);
     }
 
