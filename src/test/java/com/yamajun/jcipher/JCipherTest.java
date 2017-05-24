@@ -1,19 +1,19 @@
-package com.yamajun.jcypher;
+package com.yamajun.jcipher;
 
-import com.yamajun.jcypher.exception.JCipherInvalidKey;
+import com.yamajun.jcipher.exception.JCipherInvalidKey;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-public class JCypherTest {
+public class JCipherTest {
 
-    private JCypher cypher;
+    private JCipher cypher;
 
     @Before
     public void setUp() throws JCipherInvalidKey {
-        cypher = new JCypher("Random_password");
+        cypher = new JCipher("Random_password");
     }
 
     @Test(expected = NumberFormatException.class)
@@ -53,6 +53,6 @@ public class JCypherTest {
 
     @Test(expected = JCipherInvalidKey.class)
     public void testEmptyKey() throws JCipherInvalidKey {
-        new JCypher("");
+        new JCipher("");
     }
 }

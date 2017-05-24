@@ -1,4 +1,4 @@
-package com.yamajun.jcypher;
+package com.yamajun.jcipher;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -12,17 +12,17 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
-import com.yamajun.jcypher.annotation.CipherMe;
-import com.yamajun.jcypher.annotation.Ciphered;
-import com.yamajun.jcypher.exception.JCipherException;
-import com.yamajun.jcypher.exception.JCipherInvalidKey;
+import com.yamajun.jcipher.annotation.CipherMe;
+import com.yamajun.jcipher.annotation.Ciphered;
+import com.yamajun.jcipher.exception.JCipherException;
+import com.yamajun.jcipher.exception.JCipherInvalidKey;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.util.Strings;
 
-public class JCypher {
-    private static final Logger logger = LogManager.getLogger(JCypher.class);
+public class JCipher {
+    private static final Logger logger = LogManager.getLogger(JCipher.class);
 
     private Cipher encryptCipher;
     private Cipher decryptCipher;
@@ -31,7 +31,7 @@ public class JCypher {
     private static final String DEFAULT_HASH_ALGORITHM = "SHA-1";
     private static final String DEFAULT_SYMETRIC_ALGORITHM = "AES";
 
-    public JCypher(String secret) throws JCipherInvalidKey {
+    public JCipher(String secret) throws JCipherInvalidKey {
         if(Strings.isBlank(secret)){
             String errorMsg = "The key can't be empty";
             logger.error(errorMsg);

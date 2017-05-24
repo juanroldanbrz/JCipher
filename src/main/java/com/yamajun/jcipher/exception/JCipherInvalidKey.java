@@ -1,4 +1,4 @@
-package com.yamajun.jcypher.exception;
+package com.yamajun.jcipher.exception;
 
 public class JCipherInvalidKey extends Exception{
     public JCipherInvalidKey(String msg){

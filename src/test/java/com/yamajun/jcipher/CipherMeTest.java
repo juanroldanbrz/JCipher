@@ -1,7 +1,7 @@
-package com.yamajun.jcypher;
+package com.yamajun.jcipher;
 
-import com.yamajun.jcypher.annotation.CipherMe;
-import com.yamajun.jcypher.annotation.Ciphered;
+import com.yamajun.jcipher.annotation.CipherMe;
+import com.yamajun.jcipher.annotation.Ciphered;
 
 @Ciphered
 public class CipherMeTest {
